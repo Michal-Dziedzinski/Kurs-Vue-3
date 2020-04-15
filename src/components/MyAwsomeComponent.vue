@@ -1,22 +1,25 @@
 <template>
   <div>
-    <button @click="sayHello">Say hello</button>
+    <button @click="incrementPension">Increment my pension</button>
+    <p>Your pension will be: {{pension}}</p>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
   name: "MyAwsomeComponent",
   setup() {
-    function sayHello() {
-      const welcomeText = "Siema, co tam?";
-      console.log(addExclamationMark(welcomeText));
+    const pension = ref(100);
+
+    console.log(pension);
+
+    function incrementPension() {
+      pension.value++;
     }
 
-    function addExclamationMark(text) {
-      return `${text}!`;
-    }
-    return { sayHello };
+    return { pension, incrementPension };
   }
 };
 </script>
