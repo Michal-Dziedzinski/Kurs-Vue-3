@@ -1,31 +1,26 @@
 <template>
   <div>
-    <h1>Price: {{price}}$</h1>
-    <button @click="makeOrder">Make next order</button>
-    <p>Quantity: {{quantity}}</p>
-    <p>Order total price: {{totalPrice}}</p>
-    <p>Tax: {{tax}}</p>
+    <p>Masks: {{masks}}</p>
+    <p v-show="masks > 3">You can buy a mask!</p>
+    <p v-show="masks > 0 && masks <=3">You can buy a mask, but hurry up!</p>
+    <p v-show="masks<=0">You can't buy a mask, it's out of stock!</p>
+    <button v-show="masks" @click="buyMask">Buy a mask</button>
   </div>
 </template>
 
 <script>
-import { computed, toRefs, reactive } from "vue";
+import { ref } from "vue";
 
 export default {
   name: "MyAwsomeComponent",
   setup() {
-    const state = reactive({
-      quantity: 0,
-      price: 100,
-      totalPrice: computed(() => state.price * state.quantity),
-      tax: computed(() => state.totalPrice * 0.23)
-    });
+    const masks = ref(5);
 
-    function makeOrder() {
-      state.quantity++;
+    function buyMask() {
+      masks.value--;
     }
 
-    return { makeOrder, ...toRefs(state) };
+    return { masks, buyMask };
   }
 };
 </script>
