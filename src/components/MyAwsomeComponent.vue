@@ -1,28 +1,16 @@
 <template>
-  <div class="candidates">
-    <div
-      v-for="(candidate, index) in candidatesWithParty"
-      :key="candidate.id"
-      class="candidates__card"
-    >
-      <p>Candidate {{ index + 1 }}</p>
-      <p>Name: {{ candidate.firstName }} {{ candidate.lastName }}</p>
-      <p>Age: {{ candidate.age }}</p>
-      <p v-if="candidate.party">Party: {{ candidate.party }}</p>
-      <div v-if="candidate.opinionPool">
-        Opinion pool:
-        <progress max="100" :value="candidate.opinionPool"></progress>
-        {{ candidate.opinionPool }}%
-      </div>
-    </div>
-  </div>
+  <ItemsList :items="candidates" />
 </template>
 
 <script>
 import { ref, computed } from 'vue';
+import ItemsList from './items/ItemsList';
 
 export default {
   name: 'MyAwsomeComponent',
+  components: {
+    ItemsList,
+  },
   setup() {
     const candidatesWithParty = computed(() =>
       candidates.value.filter(({ party }) => party),
@@ -40,7 +28,7 @@ export default {
         id: 2,
         firstName: 'Krzysztof',
         lastName: 'Bosak',
-        age: 37,
+        age: '37',
         party: 'Konfederacja Wolność i Niepodległość',
         opinionPool: 7,
       },
@@ -116,17 +104,7 @@ export default {
 </script>
 
 <style lang="scss">
-.candidates {
-  font-family: arial;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  &__card {
-    border: 1px solid black;
-    padding: 10px;
-  }
+.siema {
+  background-color: red;
 }
 </style>
