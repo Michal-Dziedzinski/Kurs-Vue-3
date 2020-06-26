@@ -5,12 +5,21 @@
 </template>
 
 <script>
-import MyAwsomeComponent from './components/MyAwsomeComponent.vue';
+import MyAwsomeComponent from "./components/MyAwsomeComponent.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    MyAwsomeComponent,
-  },
+    MyAwsomeComponent
+  }
 };
 </script>
+
+<style lang="scss">
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+</style>
