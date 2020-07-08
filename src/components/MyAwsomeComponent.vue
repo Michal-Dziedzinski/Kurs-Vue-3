@@ -1,37 +1,30 @@
 <template>
   <div class="container">
-    <div v-if="error" class="error">{{error}}</div>
-    <Suspense v-else>
-      <template #default>
-        <StarshipsList></StarshipsList>
-      </template>
-      <template #fallback>
-        <AppLoader />
-      </template>
-    </Suspense>
+    <AwsomeButton text="Log in" @click="isModalVisible = true" />
+    <teleport to="#modal">
+      <AwsomeModal v-show="isModalVisible" />
+    </teleport>
+    <AwsomeFooter />
   </div>
 </template>
 
 <script>
-import { ref, onErrorCaptured } from "vue";
-import StarshipsList from "./StarshipsList";
-import AppLoader from "./AppLoader";
+import { ref } from "vue";
+import AwsomeButton from "./AwsomeButton";
+import AwsomeFooter from "./AwsomeFooter";
+import AwsomeModal from "./AwsomeModal";
 
 export default {
   name: "MyAwsomeComponent",
   components: {
-    StarshipsList,
-    AppLoader
+    AwsomeButton,
+    AwsomeFooter,
+    AwsomeModal
   },
   setup() {
-    const error = ref(null);
+    const isModalVisible = ref(false);
 
-    onErrorCaptured(e => {
-      error.value = e;
-      return true;
-    });
-
-    return { error };
+    return { isModalVisible };
   }
 };
 </script>
@@ -43,11 +36,5 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
-  color: #fcd711;
-}
-
-.error {
-  color: #cd3727;
 }
 </style>
