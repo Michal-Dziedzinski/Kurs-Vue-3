@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import MyAwsomeComponent from "./components/MyAwsomeComponent.vue";
+import MyAwsomeComponent from './components/MyAwsomeComponent.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    MyAwsomeComponent
-  }
+    MyAwsomeComponent,
+  },
 };
 </script>
 
@@ -19,6 +19,7 @@ export default {
 *,
 *::after,
 *::before {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
