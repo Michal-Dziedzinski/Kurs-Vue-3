@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <BaseInput name="siema" />
-    <p>{{ text }}</p>
+    <BaseInput name="siema" v-model="inputText" />
+    <p>{{ inputText }}</p>
+    <button v-show="inputText" class="button" @click="revertText">
+      Revert text
+    </button>
   </div>
 </template>
 
@@ -15,16 +18,16 @@ export default {
     BaseInput,
   },
   setup() {
-    const text = ref('');
+    const inputText = ref('');
 
     function revertText() {
-      return (text.value = text.value
+      return (inputText.value = inputText.value
         .split('')
         .reverse()
         .join(''));
     }
 
-    return { text, revertText };
+    return { inputText, revertText };
   },
 };
 </script>

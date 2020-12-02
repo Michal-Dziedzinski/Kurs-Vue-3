@@ -5,9 +5,36 @@
       :name="name"
       :type="type"
       class="input"
-      :placeholder="placeholder"
+      placeholder="First name"
+      :value="firstName"
+      @input="(e) => $emit('update:firstName', e.target.value)"
       v-model="text"
     />
+    <input
+      :name="name"
+      :type="type"
+      class="input"
+      placeholder="Last name"
+      :value="lastName"
+      @input="(e) => $emit('update:lastName', e.target.value)"
+      v-model="text"
+    />
+    <!-- <input
+      :name="name"
+      :type="type"
+      class="input"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="(e) => $emit('update:modelValue', e.target.value)"
+      v-model="text"
+    /> -->
+    <!-- <input
+      :name="name"
+      :type="type"
+      class="input"
+      :placeholder="placeholder"
+      v-model="text"
+    /> -->
     <!-- <input
       :name="name"
       :type="type"
@@ -18,12 +45,12 @@
     /> -->
     <label :for="name" class="label">{{ placeholder }}</label>
   </div>
-  <p class="result">{{ text }}</p>
-  <button v-show="text" class="button" @click="revertText">Revert text</button>
+  <!-- <p class="result">{{ text }}</p> -->
+  <!-- <button v-show="text" class="button" @click="revertText">Revert text</button> -->
 </template>
 
 <script>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 export default {
   name: 'BaseInput',
   props: {
@@ -39,19 +66,25 @@ export default {
       type: String,
       default: 'Type something...',
     },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
   },
-  setup() {
-    const text = ref('');
+  // setup() {
+  //   const text = ref('');
 
-    function revertText() {
-      return (text.value = text.value
-        .split('')
-        .reverse()
-        .join(''));
-    }
+  //   function revertText() {
+  //     return (text.value = text.value
+  //       .split('')
+  //       .reverse()
+  //       .join(''));
+  //   }
 
-    return { text, revertText };
-  },
+  //   return { text, revertText };
+  // },
 };
 </script>
 
