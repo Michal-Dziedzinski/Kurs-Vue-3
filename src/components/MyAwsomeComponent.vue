@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <BaseInput name="siema" v-model="inputText" />
+    <BaseInput name="siema" v-model:firstName="firstName" v-model:lastName="lastName"/>
+    <p>{{ firstName }}</p>
+    <p>{{ lastName }}</p>
+    <!-- <BaseInput name="siema" v-model="inputText" />
     <p>{{ inputText }}</p>
     <button v-show="inputText" class="button" @click="revertText">
       Revert text
-    </button>
+    </button> -->
   </div>
 </template>
 
@@ -19,6 +22,8 @@ export default {
   },
   setup() {
     const inputText = ref('');
+    const firstName = ref('');
+    const lastName = ref('');
 
     function revertText() {
       return (inputText.value = inputText.value
@@ -27,7 +32,7 @@ export default {
         .join(''));
     }
 
-    return { inputText, revertText };
+    return { inputText, firstName, lastName, revertText };
   },
 };
 </script>

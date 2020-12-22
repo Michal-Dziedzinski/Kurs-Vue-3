@@ -8,7 +8,6 @@
       placeholder="First name"
       :value="firstName"
       @input="(e) => $emit('update:firstName', e.target.value)"
-      v-model="text"
     />
     <input
       :name="name"
@@ -17,16 +16,13 @@
       placeholder="Last name"
       :value="lastName"
       @input="(e) => $emit('update:lastName', e.target.value)"
-      v-model="text"
     />
     <!-- <input
       :name="name"
       :type="type"
       class="input"
       :placeholder="placeholder"
-      :value="modelValue"
       @input="(e) => $emit('update:modelValue', e.target.value)"
-      v-model="text"
     /> -->
     <!-- <input
       :name="name"
@@ -43,7 +39,7 @@
       @input="text = $event.target.value"
       :value="text"
     /> -->
-    <label :for="name" class="label">{{ placeholder }}</label>
+    <!-- <label :for="name" class="label">{{ placeholder }}</label> -->
   </div>
   <!-- <p class="result">{{ text }}</p> -->
   <!-- <button v-show="text" class="button" @click="revertText">Revert text</button> -->
