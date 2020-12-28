@@ -1,52 +1,26 @@
 <template>
   <div class="search">
-    <!-- <input :name="name" :type="type" class="input" :placeholder="placeholder" /> -->
     <input
       :name="name"
       :type="type"
       class="input"
-      placeholder="First name"
-      :value="firstName"
+      :placeholder="placeholder"
       @input="(e) => $emit('update:firstName', e.target.value)"
+      :value="firstName"
     />
     <input
       :name="name"
       :type="type"
       class="input"
-      placeholder="Last name"
-      :value="lastName"
+      :placeholder="placeholder"
       @input="(e) => $emit('update:lastName', e.target.value)"
+      :value="lastName"
     />
-    <!-- <input
-      :name="name"
-      :type="type"
-      class="input"
-      :placeholder="placeholder"
-      @input="(e) => $emit('update:modelValue', e.target.value)"
-    /> -->
-    <!-- <input
-      :name="name"
-      :type="type"
-      class="input"
-      :placeholder="placeholder"
-      v-model="text"
-    /> -->
-    <!-- <input
-      :name="name"
-      :type="type"
-      class="input"
-      :placeholder="placeholder"
-      @input="text = $event.target.value"
-      :value="text"
-    /> -->
     <!-- <label :for="name" class="label">{{ placeholder }}</label> -->
   </div>
-  <!-- <p class="result">{{ text }}</p> -->
-  <!-- <button v-show="text" class="button" @click="revertText">Revert text</button> -->
 </template>
 
 <script>
-// import { ref } from 'vue';
 export default {
   name: 'BaseInput',
   props: {
@@ -69,18 +43,6 @@ export default {
       type: String,
     },
   },
-  // setup() {
-  //   const text = ref('');
-
-  //   function revertText() {
-  //     return (text.value = text.value
-  //       .split('')
-  //       .reverse()
-  //       .join(''));
-  //   }
-
-  //   return { text, revertText };
-  // },
 };
 </script>
 
@@ -89,6 +51,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .input {

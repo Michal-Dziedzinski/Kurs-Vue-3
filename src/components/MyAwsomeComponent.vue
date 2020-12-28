@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <BaseInput name="siema" v-model:firstName="firstName" v-model:lastName="lastName"/>
-    <p>{{ firstName }}</p>
-    <p>{{ lastName }}</p>
-    <!-- <BaseInput name="siema" v-model="inputText" />
-    <p>{{ inputText }}</p>
-    <button v-show="inputText" class="button" @click="revertText">
-      Revert text
-    </button> -->
+    <BaseInput
+      name="input"
+      v-model:firstName="firstName"
+      v-model:lastName="lastName"
+    />
+    <p class="result">{{ firstName }}</p>
+    <p class="result">{{ lastName }}</p>
+    <button class="button" @click="revertText">Revert text</button>
   </div>
 </template>
 
@@ -21,18 +21,22 @@ export default {
     BaseInput,
   },
   setup() {
-    const inputText = ref('');
+    const text = ref('');
     const firstName = ref('');
     const lastName = ref('');
 
     function revertText() {
-      return (inputText.value = inputText.value
+      firstName.value = firstName.value
         .split('')
         .reverse()
-        .join(''));
+        .join('');
+      lastName.value = lastName.value
+        .split('')
+        .reverse()
+        .join('');
     }
 
-    return { inputText, firstName, lastName, revertText };
+    return { text, firstName, lastName, revertText };
   },
 };
 </script>
@@ -44,9 +48,6 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-.input {
-  margin-top: 10px;
 }
 .button {
   cursor: pointer;
@@ -68,22 +69,7 @@ export default {
     border-color: #000;
   }
 }
-.outer {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #42b883;
-  margin-top: 10px;
-}
-.inner {
-  width: 50px;
-  height: 50px;
-  background-color: #35495e;
-}
-.form {
-  display: flex;
-  flex-direction: column;
+.result {
+  margin-top: 100px;
 }
 </style>
