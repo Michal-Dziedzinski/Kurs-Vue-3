@@ -1,42 +1,18 @@
 <template>
   <div class="container">
-    <BaseInput
-      name="input"
-      v-model:firstName="firstName"
-      v-model:lastName="lastName"
-    />
-    <p class="result">{{ firstName }}</p>
-    <p class="result">{{ lastName }}</p>
-    <button class="button" @click="revertText">Revert text</button>
+    <CompositionComponent component-name="Composition component" />
+    <OptionsComponent component-name="Options component" />
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-import BaseInput from './BaseInput';
-
+import CompositionComponent from "./CompositionComponent";
+import OptionsComponent from "./OptionsComponent";
 export default {
-  name: 'MyAwsomeComponent',
+  name: "MyAwsomeComponent",
   components: {
-    BaseInput,
-  },
-  setup() {
-    const text = ref('');
-    const firstName = ref('');
-    const lastName = ref('');
-
-    function revertText() {
-      firstName.value = firstName.value
-        .split('')
-        .reverse()
-        .join('');
-      lastName.value = lastName.value
-        .split('')
-        .reverse()
-        .join('');
-    }
-
-    return { text, firstName, lastName, revertText };
+    CompositionComponent,
+    OptionsComponent,
   },
 };
 </script>
