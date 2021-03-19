@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ props.componentName }}</h1>
+    <h2>{{ componentName }}</h2>
     <div>
       First value:
       {{ valueToIncrement }}
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch, reactive } from "vue";
+import { ref, computed, onMounted, watch, reactive, toRefs } from 'vue'
 
 export default {
-  name: "CompositionComponent",
+  name: 'CompositionAPI',
   props: {
     componentName: {
       required: true,
@@ -31,39 +31,39 @@ export default {
     },
   },
   setup(props) {
-    console.log("Hi, I am created from Vue 3");
+    console.log('Hi, I am created from Composition API')
 
-    onMounted(console.log("Hi, I am mounted from Vue 3"));
+    onMounted(() => console.log('Hi, I am mounted from Composition API'))
 
     const state = reactive({
       secondValueToIncrement: 100,
       secondValueToDecrement: 110,
-    });
+    })
 
     //Increment
-    const valueToIncrement = ref(0);
+    const valueToIncrement = ref(0)
     function increment() {
-      valueToIncrement.value++;
-      state.secondValueToIncrement++;
+      valueToIncrement.value++
+      state.secondValueToIncrement++
     }
     watch(valueToIncrement, () => {
-      console.log(`Vue 3. Now value is ${valueToIncrement.value}`);
-    });
+      console.log(`Composition API. Now value is ${valueToIncrement.value}`)
+    })
 
     //Decrement
-    const valueToDecrement = ref(10);
+    const valueToDecrement = ref(10)
     function decrement() {
-      valueToDecrement.value--;
-      state.secondValueToDecrement--;
+      valueToDecrement.value--
+      state.secondValueToDecrement--
     }
 
-    //Radnomize color
+    //Randomize color
     function randomizeColor() {
-      return Math.floor(Math.random() * 255);
+      return Math.floor(Math.random() * 255)
     }
     const activeColor = computed(
       () => `rgb(${randomizeColor()},${randomizeColor()},${randomizeColor()})`
-    );
+    )
 
     return {
       state,
@@ -72,10 +72,10 @@ export default {
       valueToDecrement,
       decrement,
       activeColor,
-      props,
-    };
+      ...toRefs(props),
+    }
   },
-};
+}
 </script>
 
 <style scoped>

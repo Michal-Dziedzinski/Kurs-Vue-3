@@ -1,30 +1,29 @@
 <template>
   <div class="container">
-    <CompositionComponent component-name="Composition component" />
-    <OptionsComponent component-name="Options component" />
+    <h1 class="header">Api comparision</h1>
+    <div class="components">
+      <CompositionAPI component-name="Composition component" />
+      <OptionsAPI component-name="Options component" />
+    </div>
   </div>
 </template>
 
 <script>
-import CompositionComponent from "./CompositionComponent";
-import OptionsComponent from "./OptionsComponent";
+import CompositionAPI from './CompositionAPI'
+import OptionsAPI from './OptionsAPI'
 export default {
-  name: "MyAwsomeComponent",
+  name: 'MyAwsomeComponent',
   components: {
-    CompositionComponent,
-    OptionsComponent,
+    CompositionAPI,
+    OptionsAPI,
   },
-};
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 .button {
   cursor: pointer;

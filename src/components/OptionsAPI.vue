@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ componentName }}</h1>
+    <h2>{{ componentName }}</h2>
     <div>
       First value:
       {{ valueToIncrement }}
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "OptionsComponent",
+  name: 'OptionsAPI',
   props: {
     componentName: {
       required: true,
@@ -36,41 +36,40 @@ export default {
         secondValueToIncrement: 100,
         secondValueToDecrement: 110,
       },
-    };
+    }
   },
   computed: {
     activeColor() {
-      return `rgb(${this.randomizeColor()},${this.randomizeColor()},${this.randomizeColor()})`;
+      return `rgb(${this.randomizeColor()},${this.randomizeColor()},${this.randomizeColor()})`
     },
   },
   watch: {
     valueToIncrement() {
-      console.log(`Vue 2. Now value is ${this.valueToIncrement}`);
+      console.log(`Options API. Now value is ${this.valueToIncrement}`)
     },
   },
   created() {
-    console.log("Hi, I am created from Vue 2");
+    console.log('Hi, I am created from Options API')
   },
   mounted() {
-    console.log("Hi, I am mounted from Vue 2");
+    console.log('Hi, I am mounted from Options API')
   },
   methods: {
     increment() {
-      this.valueToIncrement++;
-      this.state.secondValueToIncrement++;
+      this.valueToIncrement++
+      this.state.secondValueToIncrement++
     },
     decrement() {
-      this.valueToDecrement--;
-      this.state.secondValueToDecrement--;
+      this.valueToDecrement--
+      this.state.secondValueToDecrement--
     },
     randomizeColor() {
-      return Math.floor(Math.random() * 255);
+      return Math.floor(Math.random() * 255)
     },
   },
-};
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .box {
   width: 150px;
