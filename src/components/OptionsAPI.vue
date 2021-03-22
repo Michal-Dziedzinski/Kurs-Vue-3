@@ -36,38 +36,38 @@ export default {
         secondValueToIncrement: 100,
         secondValueToDecrement: 110,
       },
-    }
+    };
   },
   computed: {
     activeColor() {
-      return `rgb(${this.randomizeColor()},${this.randomizeColor()},${this.randomizeColor()})`
+      return `rgb(${this.randomizeColor()},${this.randomizeColor()},${this.randomizeColor()})`;
     },
   },
   watch: {
     valueToIncrement() {
-      console.log(`Options API. Now value is ${this.valueToIncrement}`)
+      console.log(`Options API. Now value is ${this.valueToIncrement}`);
     },
   },
   created() {
-    console.log('Hi, I am created from Options API')
+    console.log('Hi, I am created from Options API');
   },
   mounted() {
-    console.log('Hi, I am mounted from Options API')
+    console.log('Hi, I am mounted from Options API');
   },
   methods: {
     increment() {
-      this.valueToIncrement++
-      this.state.secondValueToIncrement++
+      this.valueToIncrement++;
+      this.state.secondValueToIncrement++;
     },
     decrement() {
-      this.valueToDecrement--
-      this.state.secondValueToDecrement--
+      this.valueToDecrement--;
+      this.state.secondValueToDecrement--;
     },
     randomizeColor() {
-      return Math.floor(Math.random() * 255)
+      return Math.floor(Math.random() * 255);
     },
   },
-}
+};
 </script>
 
 <style scoped>
