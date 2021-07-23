@@ -1,11 +1,11 @@
 <template>
-  <div class="app">
+  <div>
     <header class="header">
       <router-link :to="{ path: '/' }" class="header__link">
         <h1>Star Wars people list</h1>
       </router-link>
     </header>
-    <router-view />
+    <router-view class="page-wrapper" />
   </div>
 </template>
 
@@ -23,5 +23,12 @@ body {
     color: #fcd711;
     text-decoration: none;
   }
+}
+.page-wrapper {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  min-height: 100vh;
 }
 </style>
