@@ -1,7 +1,6 @@
 <template>
   <section>
-    <div v-if="error">{{ error }}</div>
-    <Suspense v-else>
+    <Suspense>
       <template #default>
         <ItemDetails :id="id" />
       </template>
@@ -13,7 +12,6 @@
 </template>
 
 <script>
-import { ref, onErrorCaptured } from 'vue';
 import ItemDetails from '@/components/ItemDetails.vue';
 import BaseLoader from '@/components/BaseLoader';
 
@@ -28,15 +26,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  setup() {
-    const error = ref(null);
-
-    onErrorCaptured((e) => {
-      error.value = e;
-    });
-
-    return { error };
   },
 };
 </script>
